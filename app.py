@@ -32,7 +32,8 @@ water_daily = {key: value.tolist() for key, value in generate_daily_consumption(
 #@app.route("/",methods=['GET'])
 @app.route("/")
 def get_default():
-    return jsonify({'result': "App Running..."})
+  return jsonify(electricity_data.to_dict(orient='records'))
+   # return jsonify({'result': "App Running..."})
 
 @app.route("/electricity")
 def get_electricity_data():
