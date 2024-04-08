@@ -4,7 +4,6 @@ import numpy as np
 import calendar
 from calendar import monthrange
 
-app = Flask(__name__)
 
 # Monthly consumption data
 electricity_data = pd.DataFrame({'Month': ['january','february','march','april','may','june','july','august','september','october','november','december'],
@@ -29,6 +28,9 @@ def generate_daily_consumption(months, mean_consumption, std_dev):
 electricity_daily = {key: value.tolist() for key, value in generate_daily_consumption(electricity_data['Month'], mean_consumption=4000, std_dev=1000).items()}
 gas_daily = {key: value.tolist() for key, value in generate_daily_consumption(gas_data['Month'], mean_consumption=2000, std_dev=500).items()}
 water_daily = {key: value.tolist() for key, value in generate_daily_consumption(water_data['Month'], mean_consumption=50, std_dev=10).items()}
+
+
+app = Flask(__name__)
 
 
 @app.route("/",methods=['GET'])
