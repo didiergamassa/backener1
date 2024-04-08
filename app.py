@@ -29,8 +29,8 @@ gas_daily = {key: value.tolist() for key, value in generate_daily_consumption(ga
 water_daily = {key: value.tolist() for key, value in generate_daily_consumption(water_data['Month'], mean_consumption=50, std_dev=10).items()}
 
 
-
-@app.route("/",methods=['GET'])
+#@app.route("/",methods=['GET'])
+@app.route("/")
 def get_default():
     return jsonify({'result': "App Running..."})
 
