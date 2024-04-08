@@ -23,19 +23,18 @@ def generate_daily_consumption(months, mean_consumption, std_dev):
         data[month] = np.random.normal(mean_consumption, std_dev, num_days).astype(int)
     return data
 
+
+
 # Calculate daily consumption
 electricity_daily = {key: value.tolist() for key, value in generate_daily_consumption(electricity_data['Month'], mean_consumption=4000, std_dev=1000).items()}
 gas_daily = {key: value.tolist() for key, value in generate_daily_consumption(gas_data['Month'], mean_consumption=2000, std_dev=500).items()}
 water_daily = {key: value.tolist() for key, value in generate_daily_consumption(water_data['Month'], mean_consumption=50, std_dev=10).items()}
 
 
-#@app.route("/",methods=['GET'])
-#@app.route("/")
-#def get_default():
- # return jsonify(electricity_data.to_dict(orient='records'))
-   # return jsonify({'result': "App Running..."})
-#électricity
-@app.route("/")
+@app.route("/",methods=['GET'])
+   return jsonify({'result': "App Running..."})
+
+@app.route("/electricity")
 def get_electricity_data():
     return jsonify(electricity_data.to_dict(orient='records'))
 
